@@ -35,7 +35,7 @@ namespace  Admin.Core.models
 
         public bool IsUserDeleted { get; set; }
         public ICollection<userRole> UserRoles { get; set; } = new List<userRole>();
-        public ICollection<RefreshToken> RefreshToken { get; set; } = new List<RefreshToken>();
+        public ICollection<RefreshToken> RefreshToken { get; set; } = new HashSet<RefreshToken>();
 
     }
 }
