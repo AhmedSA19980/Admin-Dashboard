@@ -54,8 +54,7 @@ namespace Admin.Data
 
             modelBuilder.Entity<userRole>(entity => {
 
-                entity.HasOne(r => r.u).WithMany(r => r.Id).HasForeignKey(r => r.).OnDelete(DeleteBehavior.Restrict);
-
+                entity.HasOne(r => r.Role).WithMany(r => r.UserRoles).HasForeignKey(r => r.RoleId).OnDelete(DeleteBehavior.Restrict);
 
 
             });
