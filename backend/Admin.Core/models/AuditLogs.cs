@@ -22,11 +22,11 @@ namespace  Admin.Core.models
         [Required , MaxLength(45)]
         public string IpAddress {  get; set; }
 
-        public DateTime LoggedDate { get; set; } = DateTime.UtcNow;  //default current date
+        public DateTime LoggedDate { get; set; }
 
 
 
-        public bool LogginStatus { get; set; } // logedin or loggedout  0=> loggedout 1=>loggedin
+        public bool LogginStatus { get; set; } //   0=> loggedout ,  1=>loggedin
 
         [Required]
         public string RefreshToken { get; set; }

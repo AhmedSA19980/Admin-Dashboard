@@ -25,11 +25,11 @@ namespace  Admin.Core.models
 
         public DateTime ExpiredAt { get; set; }
 
-        public DateTime? Revoked {  get; set; } // allow null
-        public string? RevokedByIP { get; set; } // same
-        public string? ReplaceByToken { get; set; } //same
+        public DateTime? Revoked {  get; set; } 
+        public string? RevokedByIP { get; set; } 
+        public string? ReplaceByToken { get; set; } 
 
-        public string? ReasonRevoked { get; set; }  //same
+        public string? ReasonRevoked { get; set; }  
 
         public User User { get; set; } = null!;
     }
