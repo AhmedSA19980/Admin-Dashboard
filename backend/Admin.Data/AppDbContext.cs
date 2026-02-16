@@ -69,6 +69,10 @@ namespace Admin.Data
 
             });
 
+            modelBuilder.Entity<AuditLogs>(entity => {
+                entity.Property(al => al.LoggedDate).HasDefaultValueSql("GETUTCDATE()");
+            })
+
         }
 
 
