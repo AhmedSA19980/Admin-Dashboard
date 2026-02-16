@@ -18,4 +18,3 @@ namespace  Admin.Core.models
         public ICollection<userRole> UserRoles { get; set; } = new HashSet<userRole>();
     }
 }
-// 
