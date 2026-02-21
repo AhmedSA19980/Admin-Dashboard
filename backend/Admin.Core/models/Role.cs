@@ -14,6 +14,6 @@ namespace  Admin.Core.models
         [Required]
         public string Name { get; set; }
 
-        public ICollection<userRole> UserRoles { get; set; } = new HashSet<userRole>();
+        public ICollection<UserRole> UserRoles { get; set; } = new HashSet<UserRole>();
     }
 }
