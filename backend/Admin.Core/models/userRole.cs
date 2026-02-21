@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Admin.Core.models
 {
-    public  class userRole
+    public  class UserRole
     {
         [Key]
         public int Id { get; set; }

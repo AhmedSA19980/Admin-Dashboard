@@ -34,7 +34,7 @@ namespace Admin.Core.models
         public DateTime CreatedAt { get; set; }
 
         public bool IsUserDeleted { get; set; }
-        public ICollection<userRole> UserRoles { get; set; } = new List<userRole>();
+        public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
         public ICollection<RefreshToken> RefreshToken { get; set; } = new HashSet<RefreshToken>();
 
     }

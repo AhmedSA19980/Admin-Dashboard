@@ -13,7 +13,7 @@ namespace Admin.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-        public DbSet<userRole> UserRoles { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         public DbSet<AuditLogs> AuditLogs { get; set; }
 
@@ -46,13 +46,13 @@ namespace Admin.Data
 
             });
            
-            modelBuilder.Entity<userRole>(entity => {
+            modelBuilder.Entity<UserRole>(entity => {
 
                 entity.HasOne(ur => ur.User).WithMany(u => u.UserRoles).HasForeignKey(u => u.UserId).OnDelete(DeleteBehavior.Restrict);
                
             });
 
-            modelBuilder.Entity<userRole>(entity => {
+            modelBuilder.Entity<UserRole>(entity => {
 
                 entity.HasOne(r => r.Role).WithMany(r => r.UserRoles).HasForeignKey(r => r.RoleId).OnDelete(DeleteBehavior.Restrict);
 
