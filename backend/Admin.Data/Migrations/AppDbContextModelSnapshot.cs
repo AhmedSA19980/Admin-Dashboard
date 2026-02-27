@@ -148,7 +148,9 @@ namespace Admin.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsUserDeleted")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("Last_Name")
                         .IsRequired()
@@ -161,9 +163,6 @@ namespace Admin.Data.Migrations
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
