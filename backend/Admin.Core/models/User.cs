@@ -29,7 +29,7 @@ namespace Admin.Core.models
         [Required]
         public string Password { get; set; }
 
-
+    
         public DateTime CreatedAt { get; set; }
 
         public bool IsUserDeleted { get; set; } // 0 =>  false , 1 => true
