@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.interfaces.role
 {
-    public interface IRoleRepository : IReadRepository 
+    public interface IRoleRepository<T> : IReadRepository <T> where T : class
     {
 
     }

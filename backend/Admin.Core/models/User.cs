@@ -29,11 +29,10 @@ namespace Admin.Core.models
         [Required]
         public string Password { get; set; }
 
-        public bool isActive { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
-        public bool IsUserDeleted { get; set; }
+        public bool IsUserDeleted { get; set; } // 0 =>  false , 1 => true
         public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
         public ICollection<RefreshToken> RefreshToken { get; set; } = new HashSet<RefreshToken>();
 

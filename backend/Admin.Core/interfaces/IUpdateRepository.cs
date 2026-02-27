@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.interfaces
 {
-    public interface IUpdateRepository 
+    public interface IUpdateRepository <T> where T : class
     {
 
-        Task<T> UpdateBy<T>(T entity);
+        Task<T> Update(T entity) ;
 
     }
 }
