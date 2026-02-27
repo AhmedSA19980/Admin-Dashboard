@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.interfaces.refresh_token
 {
-    public  interface IRefreshToken : IWriteRepository
+    public  interface IRefreshToken<T> : IWriteRepository<T> where T : class
     {
     }
 }

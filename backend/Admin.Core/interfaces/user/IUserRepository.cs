@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.interfaces.user
 {
-    public interface IUserRepository : IReadRepository ,IWriteRepository , IUpdateRepository 
+    public interface IUserRepository<T>   : IReadRepository<T>, IWriteRepository<T>, IUpdateRepository<T>  where T : class
     {
-        Task<T> ChangePassword<T>(T Entity);
-
+        Task<bool> ChangePassword(int userId , string newPassword ) ;
+        Task<List<T>> ListAllUser();
+        Task<T> FindUserByUsername( string userName );
+        Task<T> FindUserByEmail(string email);
 
     }
 }

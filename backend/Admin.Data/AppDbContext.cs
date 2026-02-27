@@ -31,6 +31,7 @@ namespace Admin.Data
                 entity.HasMany(u => u.RefreshToken)
                 .WithOne(rt => rt.User).HasForeignKey(rt => rt.UserId).OnDelete(DeleteBehavior.Restrict);
             
+                entity.Property(u => u.IsUserDeleted).HasDefaultValue(false);
             
             });
 

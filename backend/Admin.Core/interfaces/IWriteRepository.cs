@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.interfaces
 {
-    public interface IWriteRepository
+    public interface IWriteRepository<T> where T :class
     {
-        Task <T> Add<T> (T entity);
+        Task<T> Add (T entity)  ;
 
     }
 }

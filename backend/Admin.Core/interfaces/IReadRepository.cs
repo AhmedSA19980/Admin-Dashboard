@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.interfaces
 {
-    public interface IReadRepository  
+    public interface IReadRepository<T> where T : class
     {
-        Task<T> GetById<T>(int Id);
+        Task<T> GetById(int Id) ;
     }
 }
