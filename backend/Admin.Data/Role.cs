@@ -18,17 +18,17 @@ namespace Admin.Data
             _context = context;
         }
 
-        public async Task<List<Role>> AllRoles()
+        public async Task<List<Role>> AllRolesAsync()
         {
            return await _context.Roles.ToListAsync();
         }
 
-        public async Task<Role> FindRoleByName(string roleName)
+        public async Task<Role> FindRoleByNameAsync(string roleName)
         {
             return await _context.Roles.FirstOrDefaultAsync(r => r.Name == roleName);
         }
 
-        public  async Task<Role> GetById(int Id)
+        public  async Task<Role> GetByIdAsync(int Id)
         {
             return await  _context.Roles.FindAsync(Id);
         }

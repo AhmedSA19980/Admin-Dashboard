@@ -15,7 +15,7 @@ namespace Admin.Data
         }
 
       
-        public async Task<User> Add(User enUser) 
+        public async Task<User> AddAsync(User enUser) 
         {
             await _context.Users.AddAsync(enUser);
             await _context.SaveChangesAsync();
@@ -23,7 +23,7 @@ namespace Admin.Data
         }
 
     
-        public async Task<bool> ChangePassword(int userId , string newPass)
+        public async Task<bool> ChangePasswordAsync(int userId , string newPass)
         {
             var user = new User { Id = userId, Password = newPass };
 
@@ -33,29 +33,29 @@ namespace Admin.Data
             return res;
         }
 
-        public Task<User> FindUserByEmail(string email)
+        public Task<User> FindUserByEmailAsync(string email)
         {
             return _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public Task<User> FindUserByUsername(string userName)
+        public Task<User> FindUserByUsernameAsync(string userName)
         {
             return _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
 
         }
 
-        public async Task<User> GetById(int Id)
+        public async Task<User> GetByIdAsync(int Id)
         {
             return await _context.Users.FindAsync(Id);
         }
 
-        public async Task<List<User>> ListAllUser()
+        public async Task<List<User>> ListAllUserAsync()
         {
             List<User> users = await _context.Users.ToListAsync();
             return users;
         }
 
-        public async Task<User> Update(User enUser)
+        public async Task<User> UpdateAsync(User enUser)
         {
         
             _context.Users.Update(enUser);

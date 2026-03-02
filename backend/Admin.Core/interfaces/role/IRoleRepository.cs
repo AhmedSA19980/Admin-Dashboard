@@ -9,8 +9,8 @@ namespace  Admin.Core.interfaces.role
     public interface IRoleRepository<T> : IReadRepository <T> where T : class
     {
 
-        Task<T> FindRoleByName(string roleName);
-        Task<List<T>> AllRoles();
+        Task<T> FindRoleByNameAsync(string roleName);
+        Task<List<T>> AllRolesAsync();
 
     }
 }

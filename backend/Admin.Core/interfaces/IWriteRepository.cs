@@ -8,7 +8,7 @@ namespace  Admin.Core.interfaces
 {
     public interface IWriteRepository<T> where T :class
     {
-        Task<T> Add (T entity)  ;
+        Task<T> AddAsync (T entity)  ;
 
     }
 }
