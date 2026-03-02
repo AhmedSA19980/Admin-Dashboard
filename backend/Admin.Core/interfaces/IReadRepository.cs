@@ -8,6 +8,6 @@ namespace  Admin.Core.interfaces
 {
     public interface IReadRepository<T> where T : class
     {
-        Task<T> GetById(int Id) ;
+        Task<T> GetByIdAsync(int Id) ;
     }
 }
