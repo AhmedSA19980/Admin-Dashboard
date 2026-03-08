@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.interfaces.audit_login
 {
-    public interface IAuditLogin<T> : IWriteRepository<T> where T : class
+    public interface IAuditLogin<T> : IWriteRepository<T> , IReadRepository<T> where T : class
     {
 
     }

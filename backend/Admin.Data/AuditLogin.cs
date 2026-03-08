@@ -1,6 +1,7 @@
-﻿namespace data_layer;
 
-public class Class1
+
+namespace Admin.Data
 {
+
 
 }
