@@ -63,5 +63,20 @@ namespace Admin.Data
             return enUser;
         
         }
+
+        public async Task<List<Role>> GetUserRoles(int userId) {
+
+                var userRole = await _context.UserRoles.Where(ur => ur.UserId ==userId ).Select(ur => ur.Role).ToListAsync();
+                return userRole;
+        
+        }
+       
+        public async Task<List<string>> GetUserRoleById(int userId) {
+
+            var user = await _context.UserRoles.Include(u => u.UserId == userId).Select(ur => ur.Role.Name).ToListAsync();
+
+            return user;
+        }
+
     }
 }
