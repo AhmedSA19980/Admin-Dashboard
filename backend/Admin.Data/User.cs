@@ -1,6 +1,8 @@
 using Admin.Core.interfaces.user;
 using Microsoft.EntityFrameworkCore;
 using Admin.Core.models;
+using Admin.Core.DTOs.Login;
+
 
 namespace Admin.Data
 {
@@ -23,13 +25,13 @@ namespace Admin.Data
         }
 
     
-        public async Task<bool> ChangePasswordAsync(int userId , string newPass)
+        public async Task<bool> ChangePasswordAsync(int userId, string newPass)
         {
             var user = new User { Id = userId, Password = newPass };
 
             _context.Users.Attach(user);
             _context.Entry(user).Property(u => u.Password).IsModified = true;
-            bool res = await  _context .SaveChangesAsync() > 0;
+            bool res = await _context.SaveChangesAsync() > 0;
             return res;
         }
 
@@ -66,11 +68,13 @@ namespace Admin.Data
 
         public async Task<List<Role>> GetUserRoles(int userId) {
 
-                var userRole = await _context.UserRoles.Where(ur => ur.UserId ==userId ).Select(ur => ur.Role).ToListAsync();
+            var userRole = await _context.UserRoles.Where(ur => ur.UserId == userId).Select(ur => ur.Role).ToListAsync();
+
                 return userRole;
         
         }
        
+      
         public async Task<List<string>> GetUserRoleById(int userId) {
 
             var user = await _context.UserRoles.Include(u => u.UserId == userId).Select(ur => ur.Role.Name).ToListAsync();
@@ -78,5 +82,22 @@ namespace Admin.Data
             return user;
         }
 
+        public async Task<User> FindUserByUserNameAndPasswordAsync(LoginDto login) {
+
+              return await _context.Users.FirstOrDefaultAsync(u => u.UserName == login.Login || u.Email == login.Login);
+
+        }
+        public async Task<bool> IsEmailTakenAsync(string Email) {
+
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == Email ) != null;
+
+        }
+
+        public async Task<bool> IsUserNameTakenAsync(string Email)
+        {
+
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserName == Email) != null;
+
     }
+}
 }
