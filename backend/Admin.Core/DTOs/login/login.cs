@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.DTOs.Login
 {
-    public class Login
+    public class LoginDto
     {
 
         [Required]
-        public string Email_Username { get; set; }
+        public string Login { get; set; } // username or email
         [Required]
         public string Password { get; set; }
 
