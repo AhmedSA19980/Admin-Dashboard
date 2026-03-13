@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.DTOs.users
 {
+   
     public class UserDto
     {
         int Id { get; set; }
@@ -17,10 +18,10 @@ namespace  Admin.Core.DTOs.users
         public string Email { get; set; }
 
 
-       
+    
         public string password { get; set; }
 
-        public int Role {  get; set; }
+        public List<string> Roles {  get; set; }
 
 
 

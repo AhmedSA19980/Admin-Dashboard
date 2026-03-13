@@ -2,6 +2,7 @@ using Admin.Core.interfaces.user;
 using Microsoft.EntityFrameworkCore;
 using Admin.Core.models;
 using Admin.Core.DTOs.Login;
+using Admin.Core.DTOs.users;
 
 
 namespace Admin.Data
@@ -13,21 +14,21 @@ namespace Admin.Data
 
         public UserRep(AppDbContext context)
         {
-            _context = context; 
+            _context = context;
         }
 
-      
-        public async Task<User> AddAsync(User enUser) 
+
+        public async Task<User> AddAsync(User enUser)
         {
             await _context.Users.AddAsync(enUser);
             await _context.SaveChangesAsync();
             return enUser;
         }
 
-    
-        public async Task<bool> ChangePasswordAsync(int userId, string newPass)
+
+        public async Task<bool> ChangePasswordAsync(int userId ,   string password)
         {
-            var user = new User { Id = userId, Password = newPass };
+            var user = new User { Id = userId, Password = password };
 
             _context.Users.Attach(user);
             _context.Entry(user).Property(u => u.Password).IsModified = true;
@@ -59,21 +60,21 @@ namespace Admin.Data
 
         public async Task<User> UpdateAsync(User enUser)
         {
-        
+
             _context.Users.Update(enUser);
             await _context.SaveChangesAsync();
             return enUser;
-        
+
         }
 
         public async Task<List<Role>> GetUserRoles(int userId) {
 
             var userRole = await _context.UserRoles.Where(ur => ur.UserId == userId).Select(ur => ur.Role).ToListAsync();
 
-                return userRole;
-        
+            return userRole;
+
         }
-       
+
       
         public async Task<List<string>> GetUserRoleById(int userId) {
 
@@ -98,6 +99,6 @@ namespace Admin.Data
 
             return await _context.Users.FirstOrDefaultAsync(u => u.UserName == Email) != null;
 
+        }
     }
-}
 }
