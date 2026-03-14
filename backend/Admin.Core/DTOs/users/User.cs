@@ -17,7 +17,7 @@ namespace  Admin.Core.DTOs.users
        
         public string Email { get; set; }
 
-
+        public DateTimeOffset JoinedAt { get; set; }
     
         public string password { get; set; }
 

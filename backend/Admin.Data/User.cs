@@ -58,12 +58,12 @@ namespace Admin.Data
             return users;
         }
 
-        public async Task<User> UpdateAsync(User enUser)
+        public async Task<bool> UpdateAsync(User enUser)
         {
 
             _context.Users.Update(enUser);
-            await _context.SaveChangesAsync();
-            return enUser;
+            return await _context.SaveChangesAsync() > 0;
+           
 
         }
 
@@ -76,7 +76,7 @@ namespace Admin.Data
         }
 
       
-        public async Task<List<string>> GetUserRoleById(int userId) {
+        public async Task<List<string>> GetUserRolesById(int userId) {
 
             var user = await _context.UserRoles.Include(u => u.UserId == userId).Select(ur => ur.Role.Name).ToListAsync();
 
