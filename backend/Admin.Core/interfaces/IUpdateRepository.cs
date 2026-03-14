@@ -9,7 +9,7 @@ namespace  Admin.Core.interfaces
     public interface IUpdateRepository <T> where T : class
     {
 
-        Task<T> UpdateAsync(T entity) ;
+        Task<bool> UpdateAsync(T entity) ;
 
     }
 }

@@ -16,7 +16,7 @@ namespace  Admin.Core.interfaces.user
         Task<T> FindUserByUsernameAsync( string userName );
         Task<T> FindUserByEmailAsync(string email);
         Task<T> FindUserByUserNameAndPasswordAsync(LoginDto login);
-
+        Task<List<string>> GetUserRolesById(int userId);
         Task<bool> IsEmailTakenAsync(string Email);
         Task<bool> IsUserNameTakenAsync(string Email);
     }
