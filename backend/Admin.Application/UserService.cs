@@ -97,7 +97,7 @@ namespace Admin.Application
             return UserMapper.ToDto(user);
 
         }
-        public async Task<bool> ChangePasswordAsync(changePassDto changePassDto)
+        public async Task<bool> ChangePasswordAsync(ChangePassDto changePassDto)
         {
             var userEntity = await _userRepository.GetByIdAsync(changePassDto.ID);
             if (userEntity == null)
