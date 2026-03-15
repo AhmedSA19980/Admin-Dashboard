@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace  Admin.Core.DTOs.users
 {
-    public  class changePassDto
+    public  class ChangePassDto
     {
         public int ID { get; set; }
         public string Password { get; set; }
