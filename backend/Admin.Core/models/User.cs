@@ -38,3 +38,4 @@ namespace Admin.Core.models
 
     }
 }
+
