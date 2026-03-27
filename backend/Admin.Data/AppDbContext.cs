@@ -60,6 +60,13 @@ namespace Admin.Data
 
             });
 
+            modelBuilder.Entity<UserRole>(entity => {
+
+                entity.HasIndex(ur =>new { ur.UserId , ur.RoleId}).IsUnique();
+
+
+            });
+
 
             modelBuilder.Entity<Role>(entity => {
 
