@@ -33,36 +33,37 @@ namespace Admin.Data
 
       
 
-        public async Task<bool> RefreshTokenAsync(ReqRefreshTokenDTO token)
+
+        public async Task<bool> RefreshTokenAsync(int id ,  string revokedByIp ,string replacedByToken , string reasonRevoked )
         {
-            var refreshToken = new RefreshToken { 
-                Id = token.Id,
+            var refreshToken = new RefreshToken
+            {
+                Id = id,
                 Revoked = DateTime.UtcNow,
-                RevokedByIP = token.RevokedByIp,
-                ReplaceByToken = token.ReplacedByToken,
-                ReasonRevoked = token.ReasonRevoked,
-               
- 
+                RevokedByIP = revokedByIp,
+                ReplaceByToken = replacedByToken,
+                ReasonRevoked = reasonRevoked,
+
             };
 
             _context.RefreshTokens.Attach(refreshToken);
             _context.Entry(refreshToken).Property(t => t.Revoked).IsModified = true;
             _context.Entry(refreshToken).Property(t => t.RevokedByIP).IsModified = true;
             _context.Entry(refreshToken).Property(t => t.ReplaceByToken).IsModified = true;
-           _context.Entry(refreshToken).Property(t => t.ReasonRevoked).IsModified = true;       
+            _context.Entry(refreshToken).Property(t => t.ReasonRevoked).IsModified = true;
 
 
-            return await _context.SaveChangesAsync() > 0 ;
+            return await _context.SaveChangesAsync() > 0;
 
         }
 
-        public  async Task<bool> RevokeAllRefreshTokensForUserAsync(RevokeAllRefreshTokensForUserDTO token)
+        public  async Task<bool> RevokeAllRefreshTokensForUserAsync(int userId ,string revokedByIp,string? reasonRevoked )
         {
             var userToken = new RefreshToken { 
-                UserId = token.userId,
-                RevokedByIP = token.revokedByIp,
+                UserId = userId,
+                RevokedByIP = revokedByIp,
                 Revoked = DateTime.UtcNow,
-                ReasonRevoked = token?.ReasonRevoked
+                ReasonRevoked = reasonRevoked
                     
             };
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Admin.Core.DTOs.token;
 
 namespace  Admin.Core.interfaces.refresh_token
 {
@@ -11,7 +10,7 @@ namespace  Admin.Core.interfaces.refresh_token
     {
 
         Task<T> GetRefreshTokenByTokenAsync(string refreshToken);
-        Task<bool> RefreshTokenAsync (ReqRefreshTokenDTO Token);
-        Task<bool> RevokeAllRefreshTokensForUserAsync(RevokeAllRefreshTokensForUserDTO Token);
+        Task<bool> RefreshTokenAsync (int id, string revokedByIp, string replacedByToken, string reasonRevoked);
+        Task<bool> RevokeAllRefreshTokensForUserAsync(int userId, string revokedByIp, string? reasonRevoked);
     }
 }
