@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace BlobStorage.Core.Global
+namespace Admin.Core.Global
 {
     public class HashPass
     {

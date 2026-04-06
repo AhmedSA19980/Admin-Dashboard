@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Admin.Core.DTOs.users;
-using BlobStorage.Core.Global;
+using Admin.Core.Global;
 using System.ComponentModel;
 using Admin.Application.Mappers;
 

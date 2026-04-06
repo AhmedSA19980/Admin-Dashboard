@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlobStorage.Core.Global
+namespace Admin.Core.Global
 {
     public class VerifyPass
     {

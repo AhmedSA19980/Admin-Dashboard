@@ -4,7 +4,7 @@ using Admin.Core.DTOs.users;
 using Admin.Core.interfaces.user;
 using Admin.Core.interfaces.UserRoles;
 using Admin.Core.models;
-using BlobStorage.Core.Global;
+using Admin.Core.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
