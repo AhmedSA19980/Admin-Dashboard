@@ -22,7 +22,7 @@ namespace  Admin.Core.models
         public string RefreshTok { get; set; } = null!;
         public DateTime CreatedAt { get; private set; }
 
-        public DateTime ExpiredAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         public DateTime? Revoked {  get; set; } 
         public string? RevokedByIP { get; set; } 
@@ -31,5 +31,10 @@ namespace  Admin.Core.models
         public string? ReasonRevoked { get; set; }  
 
         public User User { get; set; } = null!;
+
+
+        public bool IsExpired => DateTime.UtcNow >= ExpiresAt;
+        public bool IsRevoked => Revoked != null;
+        public bool IsActive => !IsRevoked && !IsExpired;
     }
 }
