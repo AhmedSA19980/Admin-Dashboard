@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Admin.Application
 {
@@ -18,10 +19,11 @@ namespace Admin.Application
 
         private readonly IUserRolesRepository<UserRole> _userRolesService;
 
-
-        public UserRolesService(IUserRolesRepository<UserRole> userRolesService) {
+        private readonly IConfiguration _configuration;
+        public UserRolesService(IUserRolesRepository<UserRole> userRolesService ,IConfiguration configuration) {
         
             _userRolesService = userRolesService;        
+            _configuration = configuration;
         }
 
         public async Task<int> AddUserRoleAsync(AddUserRole userRoleDto)
