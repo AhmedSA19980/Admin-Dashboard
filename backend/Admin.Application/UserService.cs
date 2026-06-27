@@ -10,6 +10,7 @@ using Admin.Core.DTOs.users;
 using Admin.Core.Global;
 using System.ComponentModel;
 using Admin.Application.Mappers;
+using Microsoft.Extensions.Configuration;
 
 namespace Admin.Application
 {
@@ -18,13 +19,14 @@ namespace Admin.Application
 
         private readonly IUserRepository<User> _userRepository;
 
-
-        public UserService(IUserRepository<User> userRepository) { 
+        private readonly IConfiguration _configuration;
+        public UserService(IUserRepository<User> userRepository ,IConfiguration configuration) { 
         
-        
+        _configuration = configuration;
             _userRepository = userRepository;   
         }
 
+      
 
 
         public async Task<int> AddUserAsync(AddUserDto userDto)
