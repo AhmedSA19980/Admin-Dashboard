@@ -26,7 +26,17 @@ namespace Admin.Data
             return _context.AuditLogs.FirstOrDefaultAsync(al => al.Id == Id);
         }
 
-    }
+        public async Task<List<AuditLogs>> GetAuditLogsAsync()
+        {
+            return await _context.AuditLogs.ToListAsync();
+        }
 
+        public async Task<List<AuditLogs>> getAuditLogsBetweenSpecificDateAsync(DateTime stDate, DateTime endate)
+        {
+            var specificDateLogs = await _context.AuditLogs.Where(al => al.LoggedDate == stDate && al.LoggedDate <= endate).ToListAsync();
+            return  specificDateLogs;
+
+        }
+    }
 }
   
