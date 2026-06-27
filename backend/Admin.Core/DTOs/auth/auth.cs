@@ -9,7 +9,7 @@ namespace  Admin.Core.DTOs.auth
     public class auth
     {
         public string AccessToken { get; set; }
-
+        public string RefreshToken { get; set; }
         public int ExpiresIn { get; set; }
     }
 }
