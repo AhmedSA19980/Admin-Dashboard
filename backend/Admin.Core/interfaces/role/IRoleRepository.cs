@@ -11,6 +11,6 @@ namespace  Admin.Core.interfaces.role
 
         Task<T> FindRoleByNameAsync(string roleName);
         Task<List<T>> AllRolesAsync();
-
+        
     }
 }

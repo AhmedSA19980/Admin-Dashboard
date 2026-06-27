@@ -17,7 +17,7 @@ namespace  Admin.Core.models
         public int UserId { get; set; }
      
         public string Email_Username { get; set; }
-        public int Role { get; set; }
+       // public int Role { get; set; }
 
         [Required , MaxLength(45)]
         public string IpAddress {  get; set; }
