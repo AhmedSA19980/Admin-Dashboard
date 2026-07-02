@@ -24,7 +24,6 @@ namespace Admin.API.Controllers
 
         public AuthController(AuthService authService)
         {
-          
             _authService = authService; 
         }
 
@@ -61,8 +60,6 @@ namespace Admin.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
-
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
 
@@ -70,12 +67,8 @@ namespace Admin.API.Controllers
             {
                 return BadRequest($"UserName/Email or Password is not correct !");
             }
-
-        
-
             try
             {
-
                 var IpAdd = GetIpAddress();
                 var auth = await _authService.AuthenticateAysnc(loginDto, IpAdd);
                 if (auth == null)
@@ -138,7 +131,6 @@ namespace Admin.API.Controllers
                 return Unauthorized("User ID not found in token.");
             }
 
-           
             var IpAdd = GetIpAddress();
             var auth = await _authService.RevokeRefreshTokenAsync(RefreshToken, userId, IpAdd);
             if (!auth)
