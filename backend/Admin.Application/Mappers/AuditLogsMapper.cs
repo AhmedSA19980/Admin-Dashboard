@@ -20,7 +20,7 @@ namespace Admin.Application.Mappers
                 IpAddress = auditLogs.IpAddress,
                 LoggedDate = auditLogs.LoggedDate,
                 LogginStatus = auditLogs.LogginStatus,
-                RefreshToken = auditLogs.RefreshToken
+                
             };
         }
         public static  auditLogin  ToDto(this AuditLogs auditLogs)
@@ -32,7 +32,7 @@ namespace Admin.Application.Mappers
                 IpAddress = auditLogs.IpAddress,
                 LoggedDate = auditLogs.LoggedDate,
                 LogginStatus = auditLogs.LogginStatus,
-                RefreshToken = auditLogs.RefreshToken
+                
             };
         }
 
