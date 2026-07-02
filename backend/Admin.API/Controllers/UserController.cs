@@ -154,8 +154,6 @@ namespace Admin.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<UserDto>>> AllUser()
         {
-
-           
             List<UserDto> users = await _userService.AllUsers();
 
             if (users == null)
@@ -172,8 +170,6 @@ namespace Admin.API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<string>>> userRoles(int userInt)
         {
-
-
             List<string> userRoles = await _userService.GetUserRoles(userInt);
 
             if (userRoles == null)
@@ -181,7 +177,6 @@ namespace Admin.API.Controllers
                 return NotFound($"users data are null.");
             }
             return Ok(userRoles);
-
         }
 
     }
