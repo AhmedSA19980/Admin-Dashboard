@@ -12,7 +12,7 @@ namespace Admin.Core.Global
         {
 
 
-            return Password == HashPass.hashPassword(InputPassword);
+            return Password == Hash.hashPassword(InputPassword);
 
         }
     }

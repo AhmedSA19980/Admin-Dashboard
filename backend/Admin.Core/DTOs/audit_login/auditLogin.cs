@@ -20,7 +20,7 @@ namespace  Admin.Core.DTOs.audit_login
 
         public bool LogginStatus { get; set; } // logedin or loggedout  0=> loggedout 1=>loggedin
 
-        public string RefreshToken { get; set; }
+       
 
 
 

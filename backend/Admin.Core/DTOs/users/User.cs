@@ -10,7 +10,7 @@ namespace  Admin.Core.DTOs.users
    
     public class UserDto
     {
-        int Id { get; set; }
+        public int Id { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
         public string UserName { get; set; }
@@ -23,7 +23,7 @@ namespace  Admin.Core.DTOs.users
 
         public List<string> Roles {  get; set; }
 
-
+        public string RefreshToken { get; set; }
 
     }
 }
