@@ -44,7 +44,7 @@ namespace Admin.Application
                 Email = userDto.Email,
                 First_Name = userDto.First_Name,
                 Last_Name = userDto.Last_Name,
-                Password = HashPass.hashPassword(userDto.Password)
+                Password = Hash.hashPassword(userDto.Password)
             };
 
             await _userRepository.AddAsync(newUser);
@@ -107,7 +107,7 @@ namespace Admin.Application
                 throw new KeyNotFoundException($"User with ID {changePassDto.ID} not found.");
             }
 
-            string hashPass = HashPass.hashPassword(changePassDto.Password);
+            string hashPass = Hash.hashPassword(changePassDto.Password);
             bool newPass =   await _userRepository.ChangePasswordAsync(userEntity.Id , hashPass);
         
             return newPass ;
