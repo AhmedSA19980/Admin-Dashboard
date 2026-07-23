@@ -4,14 +4,41 @@ name: CI-CD Pipleline
 on:
     push: 
         branches: [main]
-    
+
     pull_request:
         branches: [main]
 
 
 
 jobs:
+    changes:
+        runs-on: ubuntu-latest
+
+        outputs:
+            backend:  ${{ steps.filter.outputs.backend }}
+            frontend: ${{ steps.filter.outputs.frontend }}
+
+        steps:
+            - uses: actions/checkout@v4
+              with: 
+                fetch-depth: 0
+ 
+            - id: filter 
+              uses: dorny/paths-filter@v3
+              with:
+                filters: |
+                    backend:
+                        - 'backend/**'
+ 
+                    frontend:
+                        - 'frontend/**'
+
     backend:
+        needs: changes
+
+        if: needs.changes.outputs.backend == 'true'
+
+
         runs-on: ubuntu-latest
         steps: 
             - uses:  actions/checkout@v4
@@ -20,14 +47,50 @@ jobs:
               uses:  actions/setup-dotnet@v3
               with:
                 dotnet-version: 8.0.x
+                cache: true 
 
 
             - name: Restore
               run: dotnet restore backend/admin_dashboard_solution.sln
 
             - name: Build
-              run: dotnet build backend/admin_dashboard_solution.sln --no-restore
+              run: dotnet build backend/admin_dashboard_solution.sln --configuration Release --no-restore
 
             - name: Test
-              run: dotnet test backend/admin_dashboard_solution.sln --no-build
-        
+              run: dotnet test backend/admin_dashboard_solution.sln  --configuration Release --no-build
+    
+              
+
+
+    frontend:
+        needs: changes
+
+        if: needs.changes.outputs.frontend == 'true'
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 22
+                cache: npm
+                cache-dependency-path: frontend/admin-dashboard/package-lock.json
+
+            - name: Install dependencies
+              working-directory:  frontend/admin-dashboard
+              run: npm ci
+
+            - name: Lint
+              working-directory:  frontend/admin-dashboard
+              run: npm run lint
+
+            - name: Build
+              working-directory:  frontend/admin-dashboard
+              run: npm run build
+
+            - name: Type Check
+              working-directory: frontend/admin-dashboard
+              run: npm run type-check
