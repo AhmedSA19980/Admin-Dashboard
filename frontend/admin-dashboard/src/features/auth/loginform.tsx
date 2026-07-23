@@ -16,7 +16,7 @@ import { LoginSchema } from "@/schemas/auth";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import {useForm} from "react-hook-form";
+import { FieldErrors, useForm} from "react-hook-form";
 
 type formData = z.infer<typeof LoginSchema>
 
@@ -35,10 +35,10 @@ export default function LoginForm()  {
 
   const onSubmit = (data:formData) => {
     
-    console.log(data);
+    //console.log(data);
   }
-  const onError = (errors: any) => {
-    console.log(errors);
+  const onError = (errors: FieldErrors<formData>) => {
+   // console.log(errors);
   };
 
     return (

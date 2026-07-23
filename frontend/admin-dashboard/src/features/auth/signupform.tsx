@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { useForm } from "react-hook-form";
+import { FieldErrors, useForm } from "react-hook-form";
 import z from "zod";
 import { userSchema } from "@/schemas/user";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -34,7 +34,7 @@ export default function SignUpForm() {
     const onSubmit = (data: formData) => {
       console.log(data);
     };
-    const onError = (errors: any) => {
+    const onError = (errors: FieldErrors<formData>) => {
       console.log(errors);
     };
     
